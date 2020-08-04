@@ -7,18 +7,18 @@ class App extends React.Component {
     this.state = {
       error: null,
       isLoaded: false,
-      user: {}
+      users: []
     };
   }
 
   componentDidMount() {
-    fetch("https://jsonplaceholder.typicode.com/users/1")
+    fetch("https://yurasgr101.pythonanywhere.com/")
       .then(res => res.json())
       .then(
         (result) => {
           this.setState({
             isLoaded: true,
-            user: result
+            users: result
           });
         },
         // Примечание: важно обрабатывать ошибки именно здесь, а не в блоке catch(),
@@ -33,14 +33,14 @@ class App extends React.Component {
   }
 
   render() {
-    const { error, isLoaded, user } = this.state;
+    const { error, isLoaded, users } = this.state;
     if (error) {
       return <div>Ошибка: {error.message}</div>;
     } else if (!isLoaded) {
       return <div>Загрузка...</div>;
     } else {
       return (
-        <span>{user.name}</span>
+        <span>{users[0].name}</span>
       );
     }
   }
