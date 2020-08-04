@@ -37,7 +37,7 @@ class App extends React.Component {
     }
 
     render() {
-        const {error, isLoaded, users, status} = this.state;
+        const {users, status} = this.state;
         return (
             <span>{users[0].name}|{status}</span>
         );
