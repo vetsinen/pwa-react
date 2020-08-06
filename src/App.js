@@ -39,7 +39,7 @@ class App extends React.Component {
     render() {
         const {users, status} = this.state;
         return (
-            <span>{users[0].name}|{status}</span>
+            <span>{users[0].name}-{users[0]['birth-year']}|{status}</span>
         );
     }
 }
