@@ -8,8 +8,9 @@ class App extends React.Component {
             error: null,
             isLoaded: false,
             status: 'offline',
-            users: localStorage.getItem('users')
-        };
+            users:  localStorage.getItem('users') || [{"name": 'jack'}]
+        }
+        console.log(this.state.users[0]);
     }
 
     componentDidMount() {
@@ -22,7 +23,8 @@ class App extends React.Component {
                         status: 'online',
                         users: result
                     });
-                    localStorage.setItem('users', result)
+                    localStorage.setItem('users', result);
+                    console.log(this.state.users[0]);
                 },
                 // Примечание: важно обрабатывать ошибки именно здесь, а не в блоке catch(),
                 // чтобы не перехватывать исключения из ошибок в самих компонентах.
@@ -39,7 +41,8 @@ class App extends React.Component {
     render() {
         const {users, status} = this.state;
         return (
-            <span>{users[0].name}-{users[0]['birth-year']}|{status}</span>
+            // <span>good text is here</span>
+            <span>{users[0].name}-|{status}</span>
         );
     }
 }
