@@ -8,7 +8,8 @@ class App extends React.Component {
             error: null,
             isLoaded: false,
             status: 'offline',
-            users:  localStorage.getItem('users') || [{"name": 'jack'}]
+            // users:   [{"name": 'jack'}]
+            users: JSON.parse(localStorage.getItem('users')) || [{"name": 'jack'}]
         }
         console.log(this.state.users[0]);
     }
@@ -23,7 +24,7 @@ class App extends React.Component {
                         status: 'online',
                         users: result
                     });
-                    localStorage.setItem('users', result);
+                    localStorage.setItem('users', JSON.stringify(result));
                     console.log(this.state.users[0]);
                 },
                 // Примечание: важно обрабатывать ошибки именно здесь, а не в блоке catch(),
